@@ -7,6 +7,10 @@ def main(): # master list making sure all items are loaded
     print(f"{num_words} words found in the docutment")
     print(count) # letters and how many times
 
+    print(f"--- Begin report of{toBook} ---")
+    for each in count:
+        print(f"The {each} character was found {count[each]} times")
+
 def countWords(text): # to count the words
     words = text.split() # split the book into words
     return len(words) # length of book converted to list items

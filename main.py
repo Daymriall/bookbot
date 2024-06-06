@@ -2,14 +2,13 @@ def main(): # master list making sure all items are loaded
     toBook = "books/frankenstein.txt" # path to book
     text = get_book_text(toBook) # turn book words/string
     num_words = countWords(text) # count the strings
-    count = countLetters(text)
-
-    print(f"{num_words} words found in the docutment")
-    print(count) # letters and how many times
-
+    count = countLetters(text) # dict character : # of times
+    report = only_letters(count) # list letters only
+    sorted = sorting(report,count)
+    organized = organize(sorted)
     print(f"--- Begin report of{toBook} ---")
-    for each in count:
-        print(f"The {each} character was found {count[each]} times")
+    print(f"{num_words} words found in the docutment")
+    print(organized)
 
 def countWords(text): # to count the words
     words = text.split() # split the book into words
@@ -28,18 +27,35 @@ def countLetters(text): #pull book
         else:
             counting[lowered] = 1
     return counting
-        
-        
+
+def only_letters(count):
+    is_letter = []
+    isnot_letter = []
+    for each_in_list in count:
+        if each_in_list.isalpha() == True:
+            is_letter.append(each_in_list)
+        else:
+            isnot_letter.append(each_in_list)
+    return is_letter
+    
+def sorting(report,count):
+    fin_ito = {}
+    list_of_dicts = []
+    for i in range(len(report)):
+        if report[i] in count:
+            fin_ito[report[i]] = count[report[i]]
+            list_of_dicts.append(fin_ito)
+            fin_ito = {}
+    return list_of_dicts
+
+def organize(sorted):
+    return sorted[0]
+sorted.sort(reverse=True,key=organize)
+print(sorted)
+
 
 
     
-
-
-
-
-
-
-
 
 
 
